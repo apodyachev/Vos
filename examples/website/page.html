@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111315">
+    <meta name="description" content="A small HTTP server for V.">
+    <title>vos — HTTP for V</title>
+    <link rel="stylesheet" href="/site.css">
+    <script src="/site.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar shell">
+      <a class="wordmark" href="#top" aria-label="vos home"><span class="wordmark-mark">v</span><span>vos</span></a>
+      <nav aria-label="Main navigation"><a href="#quickstart">Quickstart</a><a href="https://github.com/pchinjr/Vos">GitHub <span aria-hidden="true">↗</span></a></nav>
+    </header>
+
+    <main id="top" class="shell">
+      <section class="intro">
+        <p class="overline"><span>V</span> / HTTP</p>
+        <h1>A small HTTP server<br>for V.</h1>
+        <p class="lede">Serve a page and its assets. Get on with your work.</p>
+        <a class="jump-link" href="#quickstart">Get started <span aria-hidden="true">↓</span></a>
+      </section>
+
+      <section class="quickstart" id="quickstart" aria-labelledby="quickstart-title">
+        <div class="section-heading"><h2 id="quickstart-title">Quickstart</h2><span>01 — 02</span></div>
+        <div class="step">
+          <span class="step-number">01</span>
+          <div class="step-body"><p>Start the server from the project root.</p>
+            <div class="code-row"><code><span class="prompt">$</span> ./vos serve examples/website/page.html</code><button class="copy-button" type="button" aria-label="Copy command">Copy</button></div>
+          </div>
+        </div>
+        <div class="step">
+          <span class="step-number">02</span>
+          <div class="step-body"><p>Open the local address.</p>
+            <div class="code-row output"><span class="output-mark">↳</span><a href="http://127.0.0.1:3000/">http://127.0.0.1:3000/</a><span class="output-status">serving</span></div>
+          </div>
+        </div>
+        <p class="footnote">Serves HTML, CSS, and JavaScript files from the same directory. <kbd>Ctrl</kbd> + <kbd>C</kbd> stops the server.</p>
+      </section>
+
+      <section class="file-list" aria-label="Example files">
+        <span class="file-label">EXAMPLE</span>
+        <span><i class="file-dot html"></i>page.html</span>
+        <span><i class="file-dot css"></i>site.css</span>
+        <span><i class="file-dot js"></i>site.js</span>
+      </section>
+    </main>
+
+    <footer class="shell footer"><span>vos <span class="divider">/</span> HTTP for V</span><a href="https://github.com/pchinjr/Vos">Source on GitHub <span aria-hidden="true">↗</span></a></footer>
+  </body>
+</html>
