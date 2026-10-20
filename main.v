@@ -6,8 +6,9 @@ import herudi.vjs.web
 
 fn print_usage() {
 	println('Usage: vos <script.js|script.ts>')
+	println('       vos serve <page.html> [address]')
 	println('')
-	println('Runs JavaScript or TypeScript using the QuickJS engine.')
+	println('Runs JavaScript or TypeScript using the QuickJS engine, or serves an HTML page.')
 }
 
 fn run_script(file_path string) ! {
@@ -64,6 +65,18 @@ fn run_script(file_path string) ! {
 fn main() {
 	if os.args.len < 2 || os.args[1] in ['--help', '-h'] {
 		print_usage()
+		return
+	}
+	if os.args[1] == 'serve' {
+		if os.args.len < 3 {
+			print_usage()
+			exit(1)
+		}
+		address := if os.args.len > 3 { os.args[3] } else { '127.0.0.1:3000' }
+		serve_page(os.args[2], address) or {
+			eprintln('Error: ${err.msg()}')
+			exit(1)
+		}
 		return
 	}
 

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101b1a">
+    <meta name="description" content="A small HTTP server for V.">
+    <title>Vos — HTTP for V</title>
+    <link rel="stylesheet" href="/site.css">
+    <script src="/site.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar wrap">
+      <a class="brand" href="#top" aria-label="Vos home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>vos
+      </a>
+      <a class="github-link" href="https://github.com/pchinjr/Vos">GitHub <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main id="top" class="wrap">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="kicker"><span></span> A small HTTP server for V</p>
+          <h1>HTTP, without<br>the <em>ceremony.</em></h1>
+          <p class="intro">Serve a page and its assets with one command.</p>
+          <a class="button" href="#start">Try the example <span aria-hidden="true">↓</span></a>
+        </div>
+
+        <div class="preview" aria-label="Preview of a locally served webpage">
+          <div class="preview-top"><div class="window-dots"><i></i><i></i><i></i></div><span>127.0.0.1:3000</span><span class="lock">●</span></div>
+          <div class="preview-page">
+            <div class="preview-nav"><span class="preview-logo"><i></i> vos</span><span class="preview-menu">HTTP&nbsp;&nbsp;&nbsp; V</span></div>
+            <div class="preview-content"><span class="preview-kicker">A SMALL SERVER</span><div class="preview-title">Hello,<br><b>web.</b></div><div class="preview-rule"></div><div class="preview-caption">served locally with vos</div></div>
+            <div class="preview-footer"><span>HTML</span><span>CSS</span><span>JS</span><span class="ok">200 OK</span></div>
+          </div>
+          <span class="asset asset-html"><b>&lt;/&gt;</b> page.html</span>
+          <span class="asset asset-css"><b>✳</b> site.css</span>
+        </div>
+      </section>
+
+      <section class="start" id="start">
+        <div class="start-label"><span class="live-dot"></span> GET STARTED</div>
+        <div class="command-row">
+          <code><span class="dollar">$</span> ./vos serve examples/website/page.html</code>
+          <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
+        </div>
+        <div class="server-output">Listening on <a href="http://127.0.0.1:3000/">127.0.0.1:3000</a></div>
+      </section>
+
+      <div class="asset-note"><span>HTML</span><span>CSS</span><span>JS</span><p>One folder. Served locally.</p></div>
+    </main>
+
+    <footer class="wrap footer"><span>vos <i>·</i> HTTP for V</span><a href="https://github.com/pchinjr/Vos">Open source <span aria-hidden="true">↗</span></a></footer>
+  </body>
+</html>

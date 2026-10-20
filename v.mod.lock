@@ -1,0 +1,12 @@
+{
+    "version": 1,
+    "modules": {
+        "herudi.vjs": {
+            "requested": "herudi.vjs",
+            "resolved": "v0.0.0-20240730073234-5cb1bf328e98",
+            "revision": "5cb1bf328e98116fc71cec70ef33e9f501de0a08",
+            "url": "https://github.com/herudi/vjs",
+            "hash": "4d8c1312e4ff22cca3c9090a5d50552abf06a913e345b85789fac30a00ca31a6"
+        }
+    }
+}

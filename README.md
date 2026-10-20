@@ -40,6 +40,24 @@ v -cc gcc -cflags "-U_TRUNCATE" run . path/to/script.js
 v -cc gcc -cflags "-U_TRUNCATE" run . path/to/script.ts
 ```
 
+To serve a static HTML page locally:
+
+```sh
+./vos serve examples/website/page.html
+```
+
+The server listens on `127.0.0.1:3000` by default. It serves the HTML file and
+other files from the same directory, including JavaScript and CSS bundles. To
+choose another address, pass it as the third argument:
+
+```sh
+./vos serve examples/website/page.html 127.0.0.1:8080
+```
+
+Open the printed URL in a browser and press Ctrl+C to stop the server. This first
+version is a static file server; JavaScript request handlers and routing are not
+implemented yet.
+
 To build a standalone executable:
 
 ```sh
