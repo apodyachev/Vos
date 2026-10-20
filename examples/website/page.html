@@ -3,53 +3,51 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#101b1a">
+    <meta name="theme-color" content="#111315">
     <meta name="description" content="A small HTTP server for V.">
-    <title>Vos — HTTP for V</title>
+    <title>vos — HTTP for V</title>
     <link rel="stylesheet" href="/site.css">
     <script src="/site.js" defer></script>
   </head>
   <body>
-    <header class="topbar wrap">
-      <a class="brand" href="#top" aria-label="Vos home">
-        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>vos
-      </a>
-      <a class="github-link" href="https://github.com/pchinjr/Vos">GitHub <span aria-hidden="true">↗</span></a>
+    <header class="topbar shell">
+      <a class="wordmark" href="#top" aria-label="vos home"><span class="wordmark-mark">v</span><span>vos</span></a>
+      <nav aria-label="Main navigation"><a href="#quickstart">Quickstart</a><a href="https://github.com/pchinjr/Vos">GitHub <span aria-hidden="true">↗</span></a></nav>
     </header>
 
-    <main id="top" class="wrap">
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="kicker"><span></span> A small HTTP server for V</p>
-          <h1>HTTP, without<br>the <em>ceremony.</em></h1>
-          <p class="intro">Serve a page and its assets with one command.</p>
-          <a class="button" href="#start">Try the example <span aria-hidden="true">↓</span></a>
-        </div>
+    <main id="top" class="shell">
+      <section class="intro">
+        <p class="overline"><span>V</span> / HTTP</p>
+        <h1>A small HTTP server<br>for V.</h1>
+        <p class="lede">Serve a page and its assets. Get on with your work.</p>
+        <a class="jump-link" href="#quickstart">Get started <span aria-hidden="true">↓</span></a>
+      </section>
 
-        <div class="preview" aria-label="Preview of a locally served webpage">
-          <div class="preview-top"><div class="window-dots"><i></i><i></i><i></i></div><span>127.0.0.1:3000</span><span class="lock">●</span></div>
-          <div class="preview-page">
-            <div class="preview-nav"><span class="preview-logo"><i></i> vos</span><span class="preview-menu">HTTP&nbsp;&nbsp;&nbsp; V</span></div>
-            <div class="preview-content"><span class="preview-kicker">A SMALL SERVER</span><div class="preview-title">Hello,<br><b>web.</b></div><div class="preview-rule"></div><div class="preview-caption">served locally with vos</div></div>
-            <div class="preview-footer"><span>HTML</span><span>CSS</span><span>JS</span><span class="ok">200 OK</span></div>
+      <section class="quickstart" id="quickstart" aria-labelledby="quickstart-title">
+        <div class="section-heading"><h2 id="quickstart-title">Quickstart</h2><span>01 — 02</span></div>
+        <div class="step">
+          <span class="step-number">01</span>
+          <div class="step-body"><p>Start the server from the project root.</p>
+            <div class="code-row"><code><span class="prompt">$</span> ./vos serve examples/website/page.html</code><button class="copy-button" type="button" aria-label="Copy command">Copy</button></div>
           </div>
-          <span class="asset asset-html"><b>&lt;/&gt;</b> page.html</span>
-          <span class="asset asset-css"><b>✳</b> site.css</span>
         </div>
+        <div class="step">
+          <span class="step-number">02</span>
+          <div class="step-body"><p>Open the local address.</p>
+            <div class="code-row output"><span class="output-mark">↳</span><a href="http://127.0.0.1:3000/">http://127.0.0.1:3000/</a><span class="output-status">serving</span></div>
+          </div>
+        </div>
+        <p class="footnote">Serves HTML, CSS, and JavaScript files from the same directory. <kbd>Ctrl</kbd> + <kbd>C</kbd> stops the server.</p>
       </section>
 
-      <section class="start" id="start">
-        <div class="start-label"><span class="live-dot"></span> GET STARTED</div>
-        <div class="command-row">
-          <code><span class="dollar">$</span> ./vos serve examples/website/page.html</code>
-          <button class="copy-button" type="button" aria-label="Copy command">Copy</button>
-        </div>
-        <div class="server-output">Listening on <a href="http://127.0.0.1:3000/">127.0.0.1:3000</a></div>
+      <section class="file-list" aria-label="Example files">
+        <span class="file-label">EXAMPLE</span>
+        <span><i class="file-dot html"></i>page.html</span>
+        <span><i class="file-dot css"></i>site.css</span>
+        <span><i class="file-dot js"></i>site.js</span>
       </section>
-
-      <div class="asset-note"><span>HTML</span><span>CSS</span><span>JS</span><p>One folder. Served locally.</p></div>
     </main>
 
-    <footer class="wrap footer"><span>vos <i>·</i> HTTP for V</span><a href="https://github.com/pchinjr/Vos">Open source <span aria-hidden="true">↗</span></a></footer>
+    <footer class="shell footer"><span>vos <span class="divider">/</span> HTTP for V</span><a href="https://github.com/pchinjr/Vos">Source on GitHub <span aria-hidden="true">↗</span></a></footer>
   </body>
 </html>

@@ -54,6 +54,21 @@ choose another address, pass it as the third argument:
 ./vos serve examples/website/page.html 127.0.0.1:8080
 ```
 
+Add `--profile` to log each request's handler time, path-resolution time, file-read
+time, and response size:
+
+```sh
+./vos serve examples/website/page.html --profile
+```
+
+These timings cover URL handling and file lookup/read inside `vos`, not time
+spent in the browser or Codespaces port proxy. Use the browser Network panel to
+compare total request time with the server log before optimizing.
+
+For browser-side timings, open the page with `?debug=1` (for example,
+`http://127.0.0.1:3000/?debug=1`) and check the developer console. It reports
+asset TTFB/download times, JavaScript evaluation time, and long main-thread tasks.
+
 Open the printed URL in a browser and press Ctrl+C to stop the server. This first
 version is a static file server; JavaScript request handlers and routing are not
 implemented yet.
