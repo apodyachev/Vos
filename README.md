@@ -57,6 +57,33 @@ v run . path/to/script.js
 v run . path/to/script.ts
 ```
 
+## Serve a website
+
+Use `vos serve` to start a local HTTP server for an HTML page and its sibling
+static assets:
+
+```sh
+vos serve examples/website/page.html
+```
+
+By default, the server listens on `127.0.0.1:3000`. Open
+<http://127.0.0.1:3000/> in a browser. The requested HTML file is served at `/`,
+and files beside it (such as CSS, JavaScript, and images) are served by their
+relative paths.
+
+To select a different address or port, provide `host:port` after the HTML path:
+
+```sh
+vos serve examples/website/page.html 127.0.0.1:8080
+```
+
+Use `--profile` to print per-request status, elapsed time, and file resolution
+and read timings to the terminal:
+
+```sh
+vos serve examples/website/page.html --profile
+```
+
 ## Install npm packages
 
 Install an npm package for vos without adding it to the current project's
