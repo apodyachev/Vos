@@ -8,17 +8,25 @@ to JavaScript by the TypeScript compiler before QuickJS runs it.
 ## Requirements
 
 - [V](https://vlang.io/)
-- GCC (on Windows, use MSYS2 UCRT64 GCC)
+- A C compiler supported by V (GCC is recommended; on Windows, use MSYS2 UCRT64 GCC)
 - TypeScript compiler (`tsc`) for `.ts` files
 - Node.js and npm to install TypeScript for `.ts` files
 
-For Windows, open an MSYS2 UCRT64 shell or prepend its tools to `PATH` in
-PowerShell. The `-U_TRUNCATE` flag avoids selecting an MSVC-only mbedTLS
-function in MinGW builds:
+On Windows, open an MSYS2 UCRT64 shell or add its tools to `PATH` in
+PowerShell. The `-U_TRUNCATE` flag is needed for MinGW builds. On Linux and
+macOS, use the commands without that Windows-specific flag.
+
+PowerShell (Windows):
 
 ```powershell
 $env:Path = "C:\msys64\ucrt64\bin;C:\msys64\usr\bin;$env:Path"
 v -cc gcc -cflags "-U_TRUNCATE" test .
+```
+
+Linux or macOS:
+
+```sh
+v test .
 ```
 
 Install the V dependency from this project:
@@ -35,49 +43,84 @@ npm install --global typescript
 
 ## Run
 
-```sh
-v -cc gcc -cflags "-U_TRUNCATE" run . path/to/script.js
-v -cc gcc -cflags "-U_TRUNCATE" run . path/to/script.ts
+Windows (PowerShell):
+
+```powershell
+v -cc gcc -cflags "-U_TRUNCATE" run . path\to\script.js
+v -cc gcc -cflags "-U_TRUNCATE" run . path\to\script.ts
 ```
 
-To serve a static HTML page locally:
+Linux or macOS:
 
 ```sh
-./vos serve examples/website/page.html
+v run . path/to/script.js
+v run . path/to/script.ts
 ```
 
-The server listens on `127.0.0.1:3000` by default. It serves the HTML file and
-other files from the same directory, including JavaScript and CSS bundles. To
-choose another address, pass it as the third argument:
+## Install npm packages
+
+Install an npm package for vos without adding it to the current project's
+`node_modules`:
 
 ```sh
-./vos serve examples/website/page.html 127.0.0.1:8080
+vos install npm:lodash
+vos install npm:@types/node
 ```
 
-Add `--profile` to log each request's handler time, path-resolution time, file-read
-time, and response size:
+You can also download a JavaScript or TypeScript module directly from an HTTP
+or HTTPS URL:
 
 ```sh
-./vos serve examples/website/page.html --profile
+vos install https://example.com/path/to/module.ts
 ```
 
-These timings cover URL handling and file lookup/read inside `vos`, not time
-spent in the browser or Codespaces port proxy. Use the browser Network panel to
-compare total request time with the server log before optimizing.
+Packages are installed under vos's per-user application data directory
+(`vos/node_modules`), with a separate package manifest and lockfile, independent
+of the current working directory and project. Node.js and npm must be available
+on `PATH` for npm packages. URL modules are cached under
+`vos/remote_modules` in the same application data directory.
 
-For browser-side timings, open the page with `?debug=1` (for example,
-`http://127.0.0.1:3000/?debug=1`) and check the developer console. It reports
-asset TTFB/download times, JavaScript evaluation time, and long main-thread tasks.
+JavaScript and TypeScript ES modules can import local files with relative
+specifiers and installed packages by their npm package name:
 
-Open the printed URL in a browser and press Ctrl+C to stop the server. This first
-version is a static file server; JavaScript request handlers and routing are not
-implemented yet.
+```js
+import { greeting } from "./greeting.js";
+import { someFunction } from "some-package";
+```
 
-To build a standalone executable:
+`vos` resolves project-local `node_modules` first, then packages installed with
+`vos install`. TypeScript is transpiled to ES2015 JavaScript while preserving
+ES module imports. Imported packages must provide JavaScript ES modules; Node.js
+built-in modules and CommonJS-only packages are not provided by QuickJS.
+
+## Create a TypeScript project
+
+Create a project directory and install TypeScript locally:
 
 ```sh
+vos new my-project
+cd my-project
+vos src/index.ts
+```
+
+Running `vos new` without a name sets up the current directory, using its
+directory name for the npm package name. The command creates `package.json`,
+`src/index.ts`, and a local TypeScript installation. `vos` uses that local
+compiler when running TypeScript files in the project; otherwise it falls back
+to `tsc` on `PATH`. A CLI process cannot change the parent shell's directory,
+so use the printed `cd` command after creating a named project.
+
+To build a standalone executable, use the Windows command in PowerShell or
+the Linux/macOS command in a shell:
+
+```powershell
 v -cc gcc -cflags "-U_TRUNCATE" -o vos .
 .\vos.exe path\to\script.ts
+```
+
+```sh
+v -o vos .
+./vos path/to/script.ts
 ```
 
 The runner exposes `console` through `herudi.vjs.web`. QuickJS does not provide
